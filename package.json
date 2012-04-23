@@ -1,0 +1,20 @@
+{
+  "author": "Kazuki Suda <kazuki.suda@gmail.com>",
+  "name": "ImageViewURLReplace.js",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/superbrothers/node-imageviewurlreplace"
+  },
+  "scripts": {
+    "test": "nodeunit test"
+  },
+  "dependencies": {
+    "request": ">=2.9.153"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
