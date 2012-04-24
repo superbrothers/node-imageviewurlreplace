@@ -92,19 +92,20 @@ module.exports = (function () {
     }
 
     if (rule.isExtractMode()) {
-      var scrapeURL  = rule.getScrapeURL()
-        , regexp     = rule.getHtmlRegExp()
-        , replace    = rule.getReplace()
-        , refererURL = rule.getRefererURL();
-
-      request({uri: scrapeURL, headers: {Referer: refererURL}, timeout: 3000}, function (error, response, body) {
+      request({
+        uri: rule.getScrapeURL(),
+        headers: {
+          Referer: rule.getRefererURL()
+        },
+        timeout: 3000
+      }, function (error, response, body) {
         var matches
           , imageURL = null;
 
         if (body !== null) {
-          matches = regexp.exec(body);
+          matches = rule.getHtmlRegExp().exec(body);
           if (matches !== null) {
-            imageURL = replace.replace(/\$EXTRACT(\d)?/g, function (str, p1, offset, s) {
+            imageURL = rule.getReplace().replace(/\$EXTRACT(\d)?/g, function (str, p1) {
               return (typeof p1 === "undefined") ? matches[1] : matches[p1];
             });
           }
