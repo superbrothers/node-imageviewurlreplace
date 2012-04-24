@@ -93,11 +93,11 @@ module.exports = (function () {
 
     if (rule.isExtractMode()) {
       request({
-        uri: rule.getScrapeURL(),
-        headers: {
+          uri: rule.getScrapeURL()
+        , headers: {
           Referer: rule.getRefererURL()
-        },
-        timeout: 3000
+        }
+        , timeout: 3000
       }, function (error, response, body) {
         var matches
           , imageURL = null;
