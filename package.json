@@ -1,6 +1,6 @@
 {
   "author": "Kazuki Suda <kazuki.suda@gmail.com>",
-  "name": "ImageViewURLReplace.js",
+  "name": "node-imageviewurlreplace",
   "version": "0.0.1",
   "repository": {
     "type": "git",
