@@ -1,7 +1,8 @@
 var path = require("path")
   , fs = require("fs")
   , request = require("request")
-  , datFile = path.join(__dirname, "ImageViewURLReplace.dat")
+  , datFiles = [path.join(__dirname, "ImageViewURLReplace.dat")]
+  , extRootDir = path.join(__dirname, "external")
   ;
 
 function Rule(args) {
@@ -56,24 +57,34 @@ function isCommentOut(line) {
   return line.match(/^('|;|\/)/) !== null;
 }
 
+// 拡張設定の探索
+datFiles = fs.readdirSync(extRootDir).filter(function (file) {
+  if (!fs.statSync(path.join(extRootDir, file)).isFile()) return;
+  return (path.extname(file) === ".dat")
+}).map(function (file) {
+  return path.join(extRootDir, file);
+}).concat(datFiles);
+
 module.exports = (function () {
   var rules = [];
 
-  fs.readFileSync(datFile, "utf8").split("\n").forEach(function (line) {
-    line = line.trim();
+  datFiles.forEach(function (datFile) {
+    fs.readFileSync(datFile, "utf8").split("\n").forEach(function (line) {
+      line = line.trim();
 
-    if (line.length > 0 && !isCommentOut(line)) {
-      var splits = line.split(/\t+/);
+      if (line.length > 0 && !isCommentOut(line)) {
+        var splits = line.split(/\t+/);
 
-      rules.push(new Rule({
-          line: line
-        , regexp: new RegExp(splits[0], "i")
-        , replace: splits[1]
-        , referer: splits[2]
-        , mode: splits[3]
-        , options: splits.splice(3)
-      }));
-    }
+        rules.push(new Rule({
+            line: line
+          , regexp: new RegExp(splits[0], "i")
+          , replace: splits[1]
+          , referer: splits[2]
+          , mode: splits[3]
+          , options: splits.splice(3)
+        }));
+      }
+    });
   });
 
   return function imageViewURLReplace(url, callback) {
