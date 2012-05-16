@@ -73,16 +73,21 @@ module.exports = (function () {
       line = line.trim();
 
       if (line.length > 0 && !isCommentOut(line)) {
-        var splits = line.split(/\t+/);
+        try {
+          var splits = line.split(/\t+/)
+            , regexp = new RegExp(splits[0], "i");
 
-        rules.push(new Rule({
-            line: line
-          , regexp: new RegExp(splits[0], "i")
-          , replace: splits[1]
-          , referer: splits[2]
-          , mode: splits[3]
-          , options: splits.splice(3)
-        }));
+          rules.push(new Rule({
+              line: line
+            , regexp: regexp
+            , replace: splits[1]
+            , referer: splits[2]
+            , mode: splits[3]
+            , options: splits.splice(3)
+          }));
+        } catch (e) {
+          console.error(e);
+        }
       }
     });
   });
