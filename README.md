@@ -1,5 +1,14 @@
 # node-imageviewurlreplace
 
+## サンプル
+
+```js
+var imageViewURLReplace = require("imageviewurlreplace");
+
+imageViewURLReplace("http://ascii.jp/elem/000/000/686/686849/img.html", function (error, res, url) {
+    console.log(url); // http://ascii.jp/elem/000/000/686/686849/sv1_c_640x480.jpg
+});
+```
 
 ## License
 
