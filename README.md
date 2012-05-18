@@ -1,6 +1,10 @@
 # node-imageviewurlreplace
 
-## サンプル
+## How to use
+
+```
+$ npm install imageviewurlreplace
+```
 
 ```js
 var imageViewURLReplace = require("imageviewurlreplace");
