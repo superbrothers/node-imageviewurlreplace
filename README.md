@@ -1,27 +1,27 @@
 # node-imageviewurlreplace
 
-## How to use
+## Installation
 
 ```
 $ npm install imageviewurlreplace
 ```
 
-```js
-var imageViewURLReplace = require("imageviewurlreplace");
+## Usage
 
-imageViewURLReplace("http://ascii.jp/elem/000/000/686/686849/img.html", function (error, res, url) {
+```javascript
+var ivur = require("imageviewurlreplace");
+
+ivur.timeout = 1000; // http request timeout (default: 1000 ms)
+
+ivur.on("error", function (error, res, body) {
+    console.log(error);
+});
+
+ivur.fetch("http://ascii.jp/elem/000/000/686/686849/img.html", function (url, res, referer) {
     console.log(url); // http://ascii.jp/elem/000/000/686/686849/sv1_c_640x480.jpg
 });
 ```
 
-## License
+## Copyright
 
-(The MIT License)
-
-Copyright (c) 2012 Kazuki Suda &lt;kazuki.suda@gmail.com&gt;
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+Copyright (c) 2012 Kazuki Suda. See LICENSE.txt for further details.
