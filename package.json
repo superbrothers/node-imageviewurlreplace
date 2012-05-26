@@ -17,5 +17,5 @@
   "engines": {
     "node": "*"
   },
-  "main": "ImageViewURLReplace"
+  "main": "index"
 }
