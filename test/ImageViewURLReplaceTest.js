@@ -54,11 +54,10 @@ module.exports = {
   }
   , "Error": {
     "http request timeout": function (test) {
-      ivur.on("error", function (error) {
+      ivur({uri: "http://ascii.jp/elem/000/000/686/686849/img.html", timeout: 1}, function () {}).on("error", function (error) {
         test.equal(error.code, "ETIMEDOUT");
         test.done();
       });
-      ivur({uri: "http://ascii.jp/elem/000/000/686/686849/img.html", timeout: 1}, function () {});
     }
   }
 };

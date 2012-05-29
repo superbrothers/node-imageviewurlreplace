@@ -11,16 +11,14 @@ $ npm install imageviewurlreplace
 ```javascript
 var ivur = require("imageviewurlreplace");
 
-ivur.on("error", function (error, res, body) {
-    console.log(error);
-});
-
 ivur({uri: "http://ascii.jp/elem/000/000/686/686849/img.html"}, function (url, referer, res) {
-    console.log(url); // http://ascii.jp/elem/000/000/686/686849/sv1_c_640x480.jpg
+  console.log(url); // http://ascii.jp/elem/000/000/686/686849/sv1_c_640x480.jpg
+}).on("error", function (error) {
+  console.log(error);
 });
 
 ivur("http://ascii.jp/elem/000/000/686/686849/img.html", function (url, referer, res) {
-    console.log(url); // http://ascii.jp/elem/000/000/686/686849/sv1_c_640x480.jpg
+  console.log(url); // http://ascii.jp/elem/000/000/686/686849/sv1_c_640x480.jpg
 });
 ```
 
