@@ -9,6 +9,12 @@ module.exports = {
         test.done();
       });
     }
+    , "jpg.toを正しく変換できる(Refererをnullで設定すると取得できない)": function (test) {
+      ivur("http://にゃー.jpg.to/", function (uri, referer, res) {
+        test.equal(uri, "http://photo1.ganref.jp/photo/0/34c02d9f7403214dbc3c39fc2da50d6f/thumb5.jpg");
+        test.done();
+      });
+    }
     , "複数の$EXTRACT": function (test) {
       ivur("http://www.vector.co.jp/magazine/softnews/120414/n1204141.html", function (uri, referer, res) {
         test.equal(uri, "http://www.vector.co.jp/magazine/softnews/120414/images/n12041411b.gif");
