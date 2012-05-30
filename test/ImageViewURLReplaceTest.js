@@ -10,8 +10,8 @@ module.exports = {
       });
     }
     , "jpg.toを正しく変換できる(Refererをnullで設定すると取得できない)": function (test) {
-      ivur("http://にゃー.jpg.to/", function (uri, referer, res) {
-        test.equal(uri, "http://photo1.ganref.jp/photo/0/34c02d9f7403214dbc3c39fc2da50d6f/thumb5.jpg");
+      ivur("http://アップル.jpg.to/", function (uri, referer, res) {
+        test.ok(/^http:\/\//.test(uri));
         test.done();
       });
     }
