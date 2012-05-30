@@ -28,7 +28,7 @@ fi
 rm "$FETCH_DIR/dat.zip"
 
 # convert
-cat "$FETCH_PATH" | iconv -f CP943 -t UTF8 | tr -d "\r" > "$FETCH_PATH.convert"
+cat "$FETCH_PATH" | iconv -c -f CP932 -t UTF8 | tr -d "\r" > "$FETCH_PATH.convert"
 if [ $? -ne 0 ]; then
   rm "$FETCH_PATH"
   test -f "$FETCH_PATH.convert" rm "$FETCH_PATH.convert"
