@@ -1,2 +1,4 @@
 http://(?:www\.)?pixiv\.net/\w+\.php\?.*illust_id=(\d+)	$EXTRACT1$EXTRACT2	http://www.pixiv.net/member_illust.php?mode=medium&illust_id=$1	$EXTRACT	"([^"]+$1)[^".]*(\.(?:jpe?g|png|gif|bmp))
 (http://.+?\.jpg\.to/?)	$EXTRACT1	$1	$EXTRACT	src="([^"]+)
+; 不正なルールのテスト用
+http://www.(yahoo.co.jp)/?	$EXTRACT	http://www.$2	$EXTRACT	src="([^"]+)"

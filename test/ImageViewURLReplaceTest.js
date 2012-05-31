@@ -59,5 +59,19 @@ module.exports = {
         test.done();
       });
     }
+    , "ルールに不正がある場合、error として emit する": function (test) {
+      ivur("http://www.yahoo.co.jp/", function (uri, referer, res) {
+      }).on("error", function (error) {
+        test.done();
+      });
+    }
+  }
+  , "Bugs": {
+    "バグの再現ケース": function (test) {
+      ivur("http://www.pixiv.net/member_illust.php?mode=medium&illust_id=77777&test=bugs", function (uri, referer, res) {
+        test.equal(uri, "http://img02.pixiv.net/img/akeno9ys/77777.jpg");
+        test.done();
+      });
+    }
   }
 };
