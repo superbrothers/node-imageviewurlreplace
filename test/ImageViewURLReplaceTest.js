@@ -16,8 +16,8 @@ module.exports = {
       });
     }
     , "複数の$EXTRACT": function (test) {
-      ivur("http://www.vector.co.jp/magazine/softnews/120414/n1204141.html", function (uri, referer, res) {
-        test.equal(uri, "http://www.vector.co.jp/magazine/softnews/120414/images/n12041411b.gif");
+      ivur("http://www.amazon.co.jp/gp/product/images/B00810VSM0/ref=dp_image_0", function (uri, referer, res) {
+        test.ok(/^http:\/\/\w+\.images-amazon\.com\/images\/I\/.*$/.test(uri));
         test.done();
       });
     }
