@@ -11,7 +11,7 @@ module.exports = {
     }
     , "単一の$EXTRACT 不正クエリ付き": function (test) {
       ivur("http://www.pixiv.net/member_illust.php?mode=medium&illust_id=77777&test=test_query", function (uri, referer, res) {
-        test.equal(uri, "http://img02.pixiv.net/img/akeno9ys/77777.jpg");
+        test.ok(/77777\.(jpg|png)$/.test(uri));
         test.equal(referer, "http://www.pixiv.net/member_illust.php?mode=medium&illust_id=77777");
         test.done();
       });
@@ -25,12 +25,6 @@ module.exports = {
     , "複数の$EXTRACT": function (test) {
       ivur("http://www.amazon.co.jp/gp/product/images/B00810VSM0/ref=dp_image_0", function (uri, referer, res) {
         test.ok(/^http:\/\/\w+\.images-amazon\.com\/images\/I\/.*$/.test(uri));
-        test.done();
-      });
-    }
-    , "リファラ付き": function (test) {
-      ivur("http://hobby-c.rash.jp/igafioz/ref/1330986364242.htm", function (uri, referer, res) {
-        test.equal(uri, "http://hobby-c.rash.jp/igafioz/src/1330986364242.jpg");
         test.done();
       });
     }
