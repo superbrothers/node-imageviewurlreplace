@@ -1,4 +1,5 @@
 # node-imageviewurlreplace
+[![Build Status](https://travis-ci.org/superbrothers/node-imageviewurlreplace.png?branch=master)](https://travis-ci.org/superbrothers/node-imageviewurlreplace)
 
 ## Installation
 
@@ -24,4 +25,4 @@ ivur("http://ascii.jp/elem/000/000/686/686849/img.html", function (url, referer,
 
 ## Copyright
 
-Copyright (c) 2012 Kazuki Suda. See LICENSE.txt for further details.
+Copyright (c) 2012 Kazuki Suda. See LICENSE for further details.
