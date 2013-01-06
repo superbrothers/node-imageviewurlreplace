@@ -4,6 +4,9 @@ update:
 	bin/datfetch.sh
 
 test:
-	nodeunit test
+	./node_modules/nodeunit/bin/nodeunit test
 
-.PHONY: update test
+jslint:
+		@find . -type d \( -name node_modules -o -name .git \) -prune -o \( -name "*.js" -o -name "*.json" \) -print0 | xargs -0 ./node_modules/jslint/bin/jslint.js
+
+.PHONY: update test jslint
