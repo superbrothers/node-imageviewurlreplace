@@ -13,7 +13,8 @@
     "request": "*"
   },
   "devDependencies": {
-    "nodeunit": "*"
+    "nodeunit": "*",
+    "jslint": "*"
   },
   "engines": {
     "node": "*"
